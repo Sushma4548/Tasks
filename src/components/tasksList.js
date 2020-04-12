@@ -6,7 +6,9 @@ import axios from 'axios';
 
 const Task = props => (
     <tr>
-      <td>{props.task.taskname}</td>
+      <td>
+      <Link to={"/viewTasks"}>{props.task.taskname}</Link> 
+       </td>
       <td>{props.task.technology}</td>
       <td>{props.task.startDate.substring(0,10)}</td>
       <td>{props.task.proposedEndDate.substring(0,10)}</td>
@@ -22,7 +24,10 @@ export default class TasksList extends Component {
 
         this.deleteTask = this.deleteTask.bind(this);
 
-        this.state = {tasks: []};
+        this.state = {
+          tasks: []
+        };
+       // this.routeChange = this.routeChange.bind(this);
     }
 
     componentDidMount() {
@@ -35,6 +40,8 @@ export default class TasksList extends Component {
         })
         
     }
+
+    
     deleteTask(id) {
         axios.delete('http://localhost:3000/tasks/'+id)
         .then(res =>

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import axios from 'axios';
+import "./static/css/App.css";
 
 
 export default class CreateTaskPlan extends Component {
@@ -17,6 +18,7 @@ constructor(props){
     this.state = {
         taskname: '',
         technology:'',
+        description:'',
         startDate: new Date(),
         proposedEndDate: new Date(),
         tasks: []
@@ -78,7 +80,8 @@ return (
 <form onSubmit={this.onSubmit}>
   <div className="form-group"> 
     <label>Taskname: </label>
-    <input  type="text"
+  
+    <input type="text"
         required
         className="form-control"
         value={this.state.taskname}
